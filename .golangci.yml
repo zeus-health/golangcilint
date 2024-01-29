@@ -1,0 +1,20 @@
+linters:
+  enable:
+    - depguard
+    - errorlint
+
+linters-settings:
+  depguard:
+    rules:
+      main:
+        deny:
+          - pkg: github.com/stretchr/testify/suite
+            desc: Testify suite functionality is disabled in this project
+  gci:
+    # Section configuration to compare against.
+    # Section names are case-insensitive and may contain parameters in ().
+    # Default: ["standard", "default"]
+    sections:
+      - standard # Captures all standard packages if they do not match another section.
+      - default # Contains all imports that could not be matched to another section type.
+      - prefix(zeus.health) # Groups all imports with the specified Prefix.
